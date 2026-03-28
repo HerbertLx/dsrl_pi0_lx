@@ -14,7 +14,7 @@ export XLA_PYTHON_CLIENT_PREALLOCATE=false
 
 pip install mujoco==2.3.7
 
-python3 examples/launch_train_sim.py \
+python3 -m examples.launch_train_sim \
 --algorithm pixel_sac \
 --env aloha_cube \
 --prefix dsrl_pi0_aloha \

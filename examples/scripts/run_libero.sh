@@ -1,20 +1,24 @@
 #!/bin/bash
 proj_name=DSRL_pi0_Libero
 device_id=0
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 
 export DISPLAY=:0
 export MUJOCO_GL=egl
 export PYOPENGL_PLATFORM=egl  
 export MUJOCO_EGL_DEVICE_ID=$device_id
 
-export OPENPI_DATA_HOME=./openpi
-export EXP=./logs/$proj_name; 
+export PYTHONPATH="$ROOT_DIR:$ROOT_DIR/LIBERO:$ROOT_DIR/openpi/src:${PYTHONPATH}"
+export OPENPI_DATA_HOME="$ROOT_DIR/openpi"
+export EXP="$ROOT_DIR/logs/$proj_name"
 export CUDA_VISIBLE_DEVICES=$device_id
 export XLA_PYTHON_CLIENT_PREALLOCATE=false
 
+cd "$ROOT_DIR"
+
 pip install mujoco==3.3.1
 
-python3 examples/launch_train_sim.py \
+python3 -m examples.launch_train_sim \
 --algorithm pixel_sac \
 --env libero \
 --prefix dsrl_pi0_libero \

@@ -16,7 +16,7 @@ export remote_host=""
 export remote_port=""
 
 
-python3 examples/launch_train_real.py \
+python3 -m examples.launch_train_real \
 --algorithm pixel_sac \
 --env franka_droid \
 --prefix dsrl_pi0_real \
@@ -32,4 +32,4 @@ python3 examples/launch_train_real.py \
 --action_magnitude 2.5 \
 --query_freq 10 \
 --hidden_dims 1024 \
---num_qs 2 
+--num_qs 2

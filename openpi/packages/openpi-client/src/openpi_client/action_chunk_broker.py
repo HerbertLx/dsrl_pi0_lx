@@ -18,19 +18,24 @@ class ActionChunkBroker(_base_policy.BasePolicy):
 
     def __init__(self, policy: _base_policy.BasePolicy, action_horizon: int):
         self._policy = policy
-
         self._action_horizon = action_horizon
         self._cur_step: int = 0
 
         self._last_results: Dict[str, np.ndarray] | None = None
 
     @override
-    def infer(self, obs: Dict, noise: float = None) -> Dict:  # noqa: UP006
+    def infer(self, obs: Dict) -> Dict:  # noqa: UP006
         if self._last_results is None:
-            self._last_results = self._policy.infer(obs, noise)
+            self._last_results = self._policy.infer(obs)
             self._cur_step = 0
 
-        results = tree.map_structure(lambda x: x[self._cur_step, ...], self._last_results)
+        def slicer(x):
+            if isinstance(x, np.ndarray):
+                return x[self._cur_step, ...]
+            else:
+                return x
+
+        results = tree.map_structure(slicer, self._last_results)
         self._cur_step += 1
 
         if self._cur_step >= self._action_horizon:
@@ -43,7 +48,3 @@ class ActionChunkBroker(_base_policy.BasePolicy):
         self._policy.reset()
         self._last_results = None
         self._cur_step = 0
-
-    @override
-    def get_prefix_rep(self, observation: Dict) -> Dict:
-        return self._policy.get_prefix_rep(observation)

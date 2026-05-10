@@ -1,0 +1,11 @@
+{
+  "episode_index": 40,
+  "total_frames": 231,
+  "evaluated_frames": 231,
+  "num_chunks": 8,
+  "action_chunk": 50,
+  "take_chunk": 30,
+  "metric_mean_mae": 0.001330466613970722,
+  "metric_mean_rmse": 0.00193871632200171,
+  "figure": "result/eval/run_20260506_132212/episode_000040_compare.png"
+}

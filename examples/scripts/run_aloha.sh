@@ -1,6 +1,8 @@
 #!/bin/bash
 proj_name=DSRL_pi0_Aloha
-device_id=0
+device_id=1
+
+conda activate dsrl_lx
 
 export DISPLAY=:0
 export MUJOCO_GL=egl
@@ -10,6 +12,9 @@ export OPENPI_DATA_HOME=./openpi
 export EXP=./logs/$proj_name; 
 export CUDA_VISIBLE_DEVICES=$device_id
 export XLA_PYTHON_CLIENT_PREALLOCATE=false
+
+export PYTHONPATH=$PYTHONPATH:/root/storage/CODE/txy/dsrl_pi0_lx/LIBERO
+export WANDB_API_KEY=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
 
 
 pip install mujoco==2.3.7

@@ -75,7 +75,7 @@ def main(variant):
     else:
         expname = create_exp_name(variant.prefix, seed=variant.seed)
    
-    outputdir = os.path.join(os.environ['EXP'], expname)
+    outputdir = os.path.abspath(os.path.join(os.environ['EXP'], expname))
     variant.outputdir = outputdir
     if not os.path.exists(outputdir):
         os.makedirs(outputdir)

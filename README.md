@@ -84,3 +84,12 @@ bash examples/scripts/run_real.sh
 ## Credits
 This repository is built upon [jaxrl2](https://github.com/ikostrikov/jaxrl2) and [PTR](https://github.com/Asap7772/PTR) repositories. 
 In case of any questions, bugs, suggestions or improvements, please feel free to contact me at nakamoto\[at\]berkeley\[dot\]edu 
+
+## Server Start Code @ 0402
+python scripts/serve_policy.py   --port 8000   policy:checkpoint   --policy.config pi0_aloha   --policy.dir /root/storage/CODE/txy/dsrl_pi0_lx/openpi/openpi-assets/openpi-assets/checkpoints/pi0_base
+
+## 数据路径
+### pi05权重
+/root/storage/CKPT/openpi/pi05_airbot/0316_pouring_water_easy_b64/10000
+### 数据
+/root/storage/DATA/airbot_ptk/0316_pouring_water_easy

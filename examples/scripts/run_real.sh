@@ -32,4 +32,5 @@ python3 -m examples.launch_train_real \
 --action_magnitude 2.5 \
 --query_freq 10 \
 --hidden_dims 1024 \
---num_qs 2
+--num_qs 2 \
+--instruction "use the left arm to pick up the yellow cup, then use the right arm to pour the coke"

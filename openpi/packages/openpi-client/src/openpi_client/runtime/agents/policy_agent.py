@@ -11,12 +11,8 @@ class PolicyAgent(_agent.Agent):
         self._policy = policy
 
     @override
-    def get_action(self, observation: dict, noise: float = None) -> dict:
-        return self._policy.infer(observation, noise)
+    def get_action(self, observation: dict) -> dict:
+        return self._policy.infer(observation)
 
     def reset(self) -> None:
         self._policy.reset()
-        
-    @override
-    def get_prefix_rep(self, observation: dict) -> dict:
-        return self._policy.get_prefix_rep(observation)

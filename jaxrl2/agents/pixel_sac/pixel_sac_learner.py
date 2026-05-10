@@ -320,7 +320,7 @@ def make_visual(q_estimates, rewards, masks, images):
 
     assert len(images.shape) == 5
     images = images[..., -1]  # only taking the most recent image of the stack
-    assert images.shape[-1] == 3
+    assert images.shape[-1] == 9
 
     interval = max(1, images.shape[0] // 4)
     sel_images = images[::interval]

@@ -1,6 +1,6 @@
 #!/bin/bash
 proj_name=DSRL_pi0_Libero
-device_id=0
+device_id=5
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 
 export DISPLAY=:0
@@ -13,6 +13,10 @@ export OPENPI_DATA_HOME="$ROOT_DIR/openpi"
 export EXP="$ROOT_DIR/logs/$proj_name"
 export CUDA_VISIBLE_DEVICES=$device_id
 export XLA_PYTHON_CLIENT_PREALLOCATE=false
+
+export JAX_PLATFORM_NAME=gpu
+export JAX_CUDA_ALLOCATOR=cuda_malloc
+export JAX_MEM_FRACTION=0.5
 
 cd "$ROOT_DIR"
 
